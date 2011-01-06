@@ -20,4 +20,15 @@ public class Hand extends ArrayList<Card> {
     public int getScore() {
         return -1;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Card card : this) {
+            sb.append(card).append(" ");
+        }
+        return sb.toString();
+    }
+
+
 }

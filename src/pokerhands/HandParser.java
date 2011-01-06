@@ -40,11 +40,11 @@ public class HandParser {
         return hasCardCountMin(4);
     }
 
-    /**
-     * @todo paramos aqui!;
-     * @return
-     */
     public boolean hasPair() {
         return hasCardCountMin(2);
+    }
+
+    public boolean hasThree() {
+        return hasCardCountMin(3);
     }
 }

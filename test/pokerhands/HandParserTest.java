@@ -76,7 +76,7 @@ public class HandParserTest {
 
     @Test
     public void testNotHasFour() {
-        System.out.println("hasFour");
+        System.out.println("hasNotFour");
         HandParser handParser = new HandParser(handPair);
         boolean result = handParser.hasFour();
         assertFalse(result);
@@ -86,8 +86,33 @@ public class HandParserTest {
     public void testHasPair() {
         System.out.println("hasPair");
         HandParser handParser = new HandParser(handPair);
-        boolean result = handParser.hasFour();
+        boolean result = handParser.hasPair();
         assertTrue(result);
     }
+
+    @Test
+    public void testNotHasPair() {
+        System.out.println("hasNotPair");
+        HandParser handParser = new HandParser(handFour);
+        boolean result = handParser.hasPair();
+        assertFalse(result);
+    }
+
+    @Test
+    public void testThree() {
+        System.out.println("hasThree");
+        HandParser handParser = new HandParser(handThree);
+        boolean result = handParser.hasThree();
+        assertTrue(result);
+    }
+
+    @Test
+    public void testNotHasThree() {
+        System.out.println("hasNotThree");
+        HandParser handParser = new HandParser(handFour);
+        boolean result = handParser.hasThree();
+        assertFalse(result);
+    }
+
 
 }
