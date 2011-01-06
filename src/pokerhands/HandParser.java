@@ -74,4 +74,11 @@ public class HandParser {
         }
         return 0;
     }
+
+    public int hasStraightFlush() {
+        if( hasFlush() ) {
+            return hasStraight();
+        }
+        return 0;
+    }
 }

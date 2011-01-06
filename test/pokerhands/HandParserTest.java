@@ -17,13 +17,14 @@ import static org.junit.Assert.*;
  * @author filipe
  */
 public class HandParserTest {
-
-    private static Hand handFour;
-    private static Hand handThree;
+    private static Hand handHigherCard;
     private static Hand handPair;
-    private static Hand handFlush;
+    private static Hand handTwoPairs;
+    private static Hand handThree;
     private static Hand handStraight;
+    private static Hand handFlush;
     private static Hand handFullHouse;
+    private static Hand handFour;
     private static Hand handStraightFlush;
 
     public HandParserTest() {
@@ -179,6 +180,30 @@ public class HandParserTest {
      */
     @Test
     public void testNotHasStraight() {
+        System.out.println("hasStraight");
+        HandParser instance = new HandParser(handFlush);
+        int expResult = 0;
+        int result = instance.hasStraight();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of hasStraight method, of class HandParser.
+     */
+    @Test
+    public void testHasStraightFlush() {
+        System.out.println("hasStraight");
+        HandParser instance = new HandParser(handStraightFlush);
+        int expResult = 10;
+        int result = instance.hasStraight();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of hasStraight method, of class HandParser.
+     */
+    @Test
+    public void testNotHasStraightFlush() {
         System.out.println("hasStraight");
         HandParser instance = new HandParser(handFlush);
         int expResult = 0;
