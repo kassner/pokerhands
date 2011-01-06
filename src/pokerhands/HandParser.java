@@ -58,4 +58,20 @@ public class HandParser {
         }
         return false;
     }
+
+    public int hasStraight() {
+        int min = 20, max = -1;
+        for (int i = 0; i < 13; i++) {
+            if (cardCount[i] > 1) {
+                return 0;
+            } else if(cardCount[i] == 1 ) {
+                if(i < min) min = i;
+                if(i > max) max = i;
+            }
+        }
+        if(max - min == 4) {
+            return max + 2;
+        }
+        return 0;
+    }
 }

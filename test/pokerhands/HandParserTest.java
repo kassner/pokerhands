@@ -155,11 +155,35 @@ public class HandParserTest {
     }
 
     @Test
-    public void testNotHasFludh() {
+    public void testNotHasFlush() {
         System.out.println("hasNotFlush");
         HandParser handParser = new HandParser(handStraight);
         boolean result = handParser.hasFlush();
         assertFalse(result);
+    }
+
+    /**
+     * Test of hasStraight method, of class HandParser.
+     */
+    @Test
+    public void testHasStraight() {
+        System.out.println("hasStraight");
+        HandParser instance = new HandParser(handStraight);
+        int expResult = 10;
+        int result = instance.hasStraight();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of hasStraight method, of class HandParser.
+     */
+    @Test
+    public void testNotHasStraight() {
+        System.out.println("hasStraight");
+        HandParser instance = new HandParser(handFlush);
+        int expResult = 0;
+        int result = instance.hasStraight();
+        assertEquals(expResult, result);
     }
 
 }
