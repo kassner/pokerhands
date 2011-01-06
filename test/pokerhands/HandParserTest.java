@@ -70,48 +70,54 @@ public class HandParserTest {
     public void testHasFour() {
         System.out.println("hasFour");
         HandParser handParser = new HandParser(handFour);
-        boolean result = handParser.hasFour();
-        assertTrue(result);
+        int result = handParser.hasFour();
+        int expResult = 10;
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testNotHasFour() {
         System.out.println("hasNotFour");
         HandParser handParser = new HandParser(handPair);
-        boolean result = handParser.hasFour();
-        assertFalse(result);
+        int result = handParser.hasFour();
+        int expResult = 0;
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testHasPair() {
         System.out.println("hasPair");
         HandParser handParser = new HandParser(handPair);
-        boolean result = handParser.hasPair();
-        assertTrue(result);
+        int result = handParser.hasPair();
+        int expResult = 10;
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testNotHasPair() {
         System.out.println("hasNotPair");
         HandParser handParser = new HandParser(handFour);
-        boolean result = handParser.hasPair();
-        assertFalse(result);
+        int result = handParser.hasPair();
+        int expResult = 0;
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testThree() {
         System.out.println("hasThree");
         HandParser handParser = new HandParser(handThree);
-        boolean result = handParser.hasThree();
-        assertTrue(result);
+        int result = handParser.hasThree();
+        int expResult = 10;
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testNotHasThree() {
         System.out.println("hasNotThree");
         HandParser handParser = new HandParser(handFour);
-        boolean result = handParser.hasThree();
-        assertFalse(result);
+        int result = handParser.hasThree();
+        int expResult = 0;
+        assertEquals(expResult, result);
     }
 
 

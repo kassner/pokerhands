@@ -16,7 +16,7 @@ public class HandParser {
     public HandParser(Hand toParseHand) {
         this.toParseHand = toParseHand;
         for (int i = 0; i < cardCount.length; i++) {
-            int j = cardCount[i] = 0;
+            cardCount[i] = 0;
         }
         countCards();
     }
@@ -27,24 +27,24 @@ public class HandParser {
         }
     }
 
-    private boolean hasCardCountMin(int minimal) {
+    private int hasCardCountMin(int minimal) {
         for (int i = 0; i < 13; i++) {
             if (cardCount[i] == minimal) {
-                return true;
+                return i + 2;
             }
         }
-        return false;
+        return 0;
     }
 
-    public boolean hasFour() {
+    public int hasFour() {
         return hasCardCountMin(4);
     }
 
-    public boolean hasPair() {
+    public int hasPair() {
         return hasCardCountMin(2);
     }
 
-    public boolean hasThree() {
+    public int hasThree() {
         return hasCardCountMin(3);
     }
 }
