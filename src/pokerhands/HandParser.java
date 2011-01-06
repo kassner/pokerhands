@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package pokerhands;
 
 /**
@@ -11,43 +10,41 @@ package pokerhands;
  */
 public class HandParser {
 
-    private int[] cards = new int[13];
+    private int[] cardCount = new int[13];
+    private Hand toParseHand;
 
-    public HandParser() {
-        for (int i = 0; i < cards.length; i++) {
-            int j = cards[i] = 0;
+    public HandParser(Hand toParseHand) {
+        this.toParseHand = toParseHand;
+        for (int i = 0; i < cardCount.length; i++) {
+            int j = cardCount[i] = 0;
+        }
+        countCards();
+    }
 
+    private void countCards() {
+        for (Card card : toParseHand) {
+            cardCount[(card.getValue() - 2)]++;
         }
     }
 
-
-    
-
-
-    public boolean hasFour(Hand hand) {
-
-        for( Card card : hand ) {
-
-            cards[(card.getValue() - 2)]++;
-        }
-
-        for(int i = 0; i < 13; i++)
-        {          
-            if (cards[i] == 4) {
+    private boolean hasCardCountMin(int minimal) {
+        for (int i = 0; i < 13; i++) {
+            if (cardCount[i] == minimal) {
                 return true;
             }
         }
-
         return false;
     }
 
+    public boolean hasFour() {
+        return hasCardCountMin(4);
+    }
 
     /**
      * @todo paramos aqui!;
      * @return
      */
-    public boolean hasPair(){
-        return false;
+    public boolean hasPair() {
+        return hasCardCountMin(2);
     }
-
 }

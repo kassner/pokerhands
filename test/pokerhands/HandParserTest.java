@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 public class HandParserTest {
 
     private static Hand handFour;
+    private static Hand handThree;
     private static Hand handPair;
 
     public HandParserTest() {
@@ -32,6 +33,13 @@ public class HandParserTest {
         handFour.add(new Card(10, Suit.HEARTS));
         handFour.add(new Card(10, Suit.SPADES));
         handFour.add(new Card(9, Suit.CLUBS));
+
+        handThree = new Hand();
+        handThree.add(new Card(10, Suit.CLUBS));
+        handThree.add(new Card(10, Suit.DIAMONDS));
+        handThree.add(new Card(10, Suit.HEARTS));
+        handThree.add(new Card(8, Suit.SPADES));
+        handThree.add(new Card(9, Suit.CLUBS));
 
         handPair = new Hand();
         handPair.add(new Card(10, Suit.CLUBS));
@@ -61,24 +69,24 @@ public class HandParserTest {
     @Test
     public void testHasFour() {
         System.out.println("hasFour");
-        HandParser handParser = new HandParser();
-        boolean result = handParser.hasFour(handFour);
+        HandParser handParser = new HandParser(handFour);
+        boolean result = handParser.hasFour();
         assertTrue(result);
     }
 
     @Test
     public void testNotHasFour() {
         System.out.println("hasFour");
-        HandParser handParser = new HandParser();
-        boolean result = handParser.hasFour(handPair);
+        HandParser handParser = new HandParser(handPair);
+        boolean result = handParser.hasFour();
         assertFalse(result);
     }
 
     @Test
     public void testHasPair() {
         System.out.println("hasPair");
-        HandParser handParser = new HandParser();
-        boolean result = handParser.hasFour(handPair);
+        HandParser handParser = new HandParser(handPair);
+        boolean result = handParser.hasFour();
         assertTrue(result);
     }
 
