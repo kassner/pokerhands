@@ -25,5 +25,9 @@ public class Card {
     public String toString() {
         return "[" + value + ":" + suit + "]";
     }
+
+    public Suit getSuit() {
+        return suit;
+    }
     
 }

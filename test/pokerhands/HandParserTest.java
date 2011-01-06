@@ -21,6 +21,10 @@ public class HandParserTest {
     private static Hand handFour;
     private static Hand handThree;
     private static Hand handPair;
+    private static Hand handFlush;
+    private static Hand handStraight;
+    private static Hand handFullHouse;
+    private static Hand handStraightFlush;
 
     public HandParserTest() {
     }
@@ -47,6 +51,27 @@ public class HandParserTest {
         handPair.add(new Card(8, Suit.CLUBS));
         handPair.add(new Card(7, Suit.CLUBS));
         handPair.add(new Card(9, Suit.CLUBS));
+
+        handFlush = new Hand();
+        handFlush.add(new Card(10, Suit.CLUBS));
+        handFlush.add(new Card(2, Suit.CLUBS));
+        handFlush.add(new Card(8, Suit.CLUBS));
+        handFlush.add(new Card(7, Suit.CLUBS));
+        handFlush.add(new Card(9, Suit.CLUBS));
+
+        handStraight = new Hand();
+        handStraight.add(new Card(10, Suit.DIAMONDS));
+        handStraight.add(new Card(6, Suit.CLUBS));
+        handStraight.add(new Card(8, Suit.CLUBS));
+        handStraight.add(new Card(7, Suit.CLUBS));
+        handStraight.add(new Card(9, Suit.CLUBS));
+
+        handStraightFlush = new Hand();
+        handStraightFlush.add(new Card(10, Suit.CLUBS));
+        handStraightFlush.add(new Card(6, Suit.CLUBS));
+        handStraightFlush.add(new Card(8, Suit.CLUBS));
+        handStraightFlush.add(new Card(7, Suit.CLUBS));
+        handStraightFlush.add(new Card(9, Suit.CLUBS));
 
     }
 
@@ -103,7 +128,7 @@ public class HandParserTest {
     }
 
     @Test
-    public void testThree() {
+    public void testHasThree() {
         System.out.println("hasThree");
         HandParser handParser = new HandParser(handThree);
         int result = handParser.hasThree();
@@ -120,5 +145,21 @@ public class HandParserTest {
         assertEquals(expResult, result);
     }
 
+
+    @Test
+    public void testHasFlush() {
+        System.out.println("hasFlush");
+        HandParser handParser = new HandParser(handFlush);
+        boolean result = handParser.hasFlush();
+        assertTrue(result);
+    }
+
+    @Test
+    public void testNotHasFludh() {
+        System.out.println("hasNotFlush");
+        HandParser handParser = new HandParser(handStraight);
+        boolean result = handParser.hasFlush();
+        assertFalse(result);
+    }
 
 }
