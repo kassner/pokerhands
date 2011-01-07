@@ -38,6 +38,23 @@ public class HandParser {
         return 0;
     }
 
+    public int hasTwoPairs() {
+        int pairs = 0;
+        int higherPair = -1;
+        for (int i = 0; i < 13; i++) {
+            if (cardCount[i] == 2) {
+                pairs++;
+                if(i > higherPair) {
+                    higherPair = i;
+                }
+            }
+        }
+        if(pairs == 2 ) {
+            return higherPair + 2;
+        }
+        return 0;
+    }
+
     public int hasFour() {
         return hasCardCountMin(4);
     }
@@ -59,6 +76,10 @@ public class HandParser {
         return false;
     }
 
+    /**
+     * @todo nao considera sequencia de As a 5
+     * @return
+     */
     public int hasStraight() {
         int min = 20, max = -1;
         for (int i = 0; i < 13; i++) {
@@ -78,6 +99,13 @@ public class HandParser {
     public int hasStraightFlush() {
         if( hasFlush() ) {
             return hasStraight();
+        }
+        return 0;
+    }
+
+    public int hasFullHouse() {
+        if( hasPair() > 0 ) {
+            return hasThree();
         }
         return 0;
     }

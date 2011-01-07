@@ -74,6 +74,28 @@ public class HandParserTest {
         handStraightFlush.add(new Card(7, Suit.CLUBS));
         handStraightFlush.add(new Card(9, Suit.CLUBS));
 
+        handFullHouse = new Hand();
+        handFullHouse.add(new Card(10, Suit.CLUBS));
+        handFullHouse.add(new Card(10, Suit.DIAMONDS));
+        handFullHouse.add(new Card(10, Suit.HEARTS));
+        handFullHouse.add(new Card(8, Suit.SPADES));
+        handFullHouse.add(new Card(8, Suit.CLUBS));
+
+        handTwoPairs = new Hand();
+        handTwoPairs.add(new Card(10, Suit.CLUBS));
+        handTwoPairs.add(new Card(10, Suit.DIAMONDS));
+        handTwoPairs.add(new Card(9, Suit.HEARTS));
+        handTwoPairs.add(new Card(8, Suit.SPADES));
+        handTwoPairs.add(new Card(8, Suit.CLUBS));
+
+        handHigherCard = new Hand();
+        handHigherCard.add(new Card(12, Suit.CLUBS));
+        handHigherCard.add(new Card(9, Suit.DIAMONDS));
+        handHigherCard.add(new Card(7, Suit.HEARTS));
+        handHigherCard.add(new Card(3, Suit.SPADES));
+        handHigherCard.add(new Card(2, Suit.CLUBS));
+
+
     }
 
     @AfterClass
@@ -180,34 +202,64 @@ public class HandParserTest {
      */
     @Test
     public void testNotHasStraight() {
-        System.out.println("hasStraight");
+        System.out.println("hasNotStraight");
         HandParser instance = new HandParser(handFlush);
         int expResult = 0;
         int result = instance.hasStraight();
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of hasStraight method, of class HandParser.
-     */
     @Test
     public void testHasStraightFlush() {
-        System.out.println("hasStraight");
+        System.out.println("hasStraightFlush");
         HandParser instance = new HandParser(handStraightFlush);
         int expResult = 10;
-        int result = instance.hasStraight();
+        int result = instance.hasStraightFlush();
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of hasStraight method, of class HandParser.
-     */
     @Test
     public void testNotHasStraightFlush() {
-        System.out.println("hasStraight");
+        System.out.println("hasNotStraightFlush");
         HandParser instance = new HandParser(handFlush);
         int expResult = 0;
-        int result = instance.hasStraight();
+        int result = instance.hasStraightFlush();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testHasFullHouse() {
+        System.out.println("hasFullHouse");
+        HandParser instance = new HandParser(handFullHouse);
+        int expResult = 10;
+        int result = instance.hasFullHouse();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testNotHasFullHouse() {
+        System.out.println("hasNotFullHouse");
+        HandParser instance = new HandParser(handFlush);
+        int expResult = 0;
+        int result = instance.hasFullHouse();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testHasTwoPairs() {
+        System.out.println("hasTwoPairs");
+        HandParser instance = new HandParser(handTwoPairs);
+        int expResult = 10;
+        int result = instance.hasTwoPairs();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testNotHasTwoPairs() {
+        System.out.println("hasNotTwoPairs");
+        HandParser instance = new HandParser(handFlush);
+        int expResult = 0;
+        int result = instance.hasTwoPairs();
         assertEquals(expResult, result);
     }
 
