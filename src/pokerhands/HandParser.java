@@ -67,13 +67,13 @@ public class HandParser {
         return hasCardCountMin(3);
     }
 
-    public boolean hasFlush() {
+    public int hasFlush() {
         for (int suit : suitCount) {
             if( suit == 5 ) {
-                return true;
+                return getHigherCard();
             }
         }
-        return false;
+        return 0;
     }
 
     /**
@@ -97,7 +97,7 @@ public class HandParser {
     }
 
     public int hasStraightFlush() {
-        if( hasFlush() ) {
+        if( hasFlush() > 0 ) {
             return hasStraight();
         }
         return 0;
@@ -117,5 +117,26 @@ public class HandParser {
             }
         }
         return 0;
+    }
+
+    public HandType getHandType() {
+        if( hasStraightFlush() > 0 ) {
+            return HandType.STRAIGHT_FLUSH;
+        } else if( hasFour() > 0 ) {
+            return HandType.FOUR;
+        } else if( hasFullHouse() > 0 ) {
+            return HandType.FULL_HOUSE;
+        } else if( hasFlush() > 0 ) {
+            return HandType.FLUSH;
+        } else if( hasStraight() > 0 ) {
+            return HandType.STRAIGHT;
+        } else if( hasThree() > 0 ) {
+            return HandType.THREE;
+        } else if( hasTwoPairs() > 0 ) {
+            return HandType.TWO_PAIRS;
+        } else if( hasPair() > 0 ) {
+            return HandType.PAIR;
+        }
+        return HandType.HIGER_CARD;
     }
 }

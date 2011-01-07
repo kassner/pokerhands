@@ -173,16 +173,18 @@ public class HandParserTest {
     public void testHasFlush() {
         System.out.println("hasFlush");
         HandParser handParser = new HandParser(handFlush);
-        boolean result = handParser.hasFlush();
-        assertTrue(result);
+        int result = handParser.hasFlush();
+        int expResult = 10;
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testNotHasFlush() {
         System.out.println("hasNotFlush");
         HandParser handParser = new HandParser(handStraight);
-        boolean result = handParser.hasFlush();
-        assertFalse(result);
+        int result = handParser.hasFlush();
+        int expResult = 0;
+        assertEquals(expResult, result);
     }
 
     /**
@@ -270,5 +272,77 @@ public class HandParserTest {
         int expResult = 12;
         int result = instance.getHigherCard();
         assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testGetHandTypeStraightFlush() {
+        System.out.println("getHandType straightFlush");
+        HandParser instance = new HandParser(handStraightFlush);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.STRAIGHT_FLUSH, result);
+    }
+
+    @Test
+    public void testGetHandTypeFour() {
+        System.out.println("getHandType four");
+        HandParser instance = new HandParser(handFour);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.FOUR, result);
+    }
+
+    @Test
+    public void testGetHandTypeFlush() {
+        System.out.println("getHandType flush");
+        HandParser instance = new HandParser(handFlush);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.FLUSH, result);
+    }
+
+    @Test
+    public void testGetHandTypeStraight() {
+        System.out.println("getHandType straight");
+        HandParser instance = new HandParser(handStraight);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.STRAIGHT, result);
+    }
+
+    @Test
+    public void testGetHandTypeFullHouse() {
+        System.out.println("getHandType fullHouse");
+        HandParser instance = new HandParser(handFullHouse);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.FULL_HOUSE, result);
+    }
+
+    @Test
+    public void testGetHandTypeThree() {
+        System.out.println("getHandType three");
+        HandParser instance = new HandParser(handThree);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.THREE, result);
+    }
+
+    @Test
+    public void testGetHandTypeTwoPairs() {
+        System.out.println("getHandType twoPairs");
+        HandParser instance = new HandParser(handTwoPairs);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.TWO_PAIRS, result);
+    }
+
+    @Test
+    public void testGetHandTypePair() {
+        System.out.println("getHandType pair");
+        HandParser instance = new HandParser(handPair);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.PAIR, result);
+    }
+
+    @Test
+    public void testGetHandTypeHigherCard() {
+        System.out.println("getHandType higherCard");
+        HandParser instance = new HandParser(handHigherCard);
+        HandType result = instance.getHandType();
+        assertEquals(HandType.HIGER_CARD, result);
     }
 }
