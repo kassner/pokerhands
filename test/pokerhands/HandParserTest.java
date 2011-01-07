@@ -263,4 +263,12 @@ public class HandParserTest {
         assertEquals(expResult, result);
     }
 
+    @Test
+    public void testGetHigherCard() {
+        System.out.println("hasTwoPairs");
+        HandParser instance = new HandParser(handHigherCard);
+        int expResult = 12;
+        int result = instance.getHigherCard();
+        assertEquals(expResult, result);
+    }
 }

@@ -109,4 +109,13 @@ public class HandParser {
         }
         return 0;
     }
+
+    public int getHigherCard() {
+        for (int i = 12; i >= 0; i--) {
+            if(cardCount[i] > 0) {
+                return i + 2;
+            }
+        }
+        return 0;
+    }
 }
