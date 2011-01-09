@@ -12,13 +12,24 @@ import java.util.ArrayList;
  * @author terminal
  */
 public class Hand extends ArrayList<Card> {
+    private ArrayList<HandPartGame> handParts = new ArrayList<HandPartGame>();
 
-    public int compare(Hand hand){
-        return 0;
+    public int compare(Hand opponentHand){
+        return compare(opponentHand.getHandParts());
     }
 
-    public int getScore() {
-        return -1;
+    public int compare(ArrayList<HandPartGame> opponentHandParts){
+        HandPartGame combination = null;
+        HandPartGame opponentCombination = null;
+        for(int i = 0; i < 5; i++) {
+            combination = handParts.get(i);
+            opponentCombination = opponentHandParts.get(i);
+            if(combination.compare(opponentCombination) == 0 ) {
+                continue;
+            }
+            return combination.compare(opponentCombination);
+        }
+        return 0;
     }
 
     @Override
@@ -28,6 +39,10 @@ public class Hand extends ArrayList<Card> {
             sb.append(card).append(" ");
         }
         return sb.toString();
+    }
+
+    public ArrayList<HandPartGame> getHandParts() {
+        return handParts;
     }
 
 
