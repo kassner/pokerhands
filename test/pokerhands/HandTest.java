@@ -19,8 +19,8 @@ import static org.junit.Assert.*;
 public class HandTest {
 
     private Deck deck;
-    private Hand hand1;
-    private Hand hand2;
+    private static Hand handThreeEight;
+    private static Hand handThreeNine;
 
     public HandTest() {
     }
@@ -28,8 +28,19 @@ public class HandTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
         Deck deck = new Deck();
-        Hand hand1 = deck.getNewHand();
-        Hand hand2 = deck.getNewHand();
+        handThreeEight = new Hand();
+        handThreeEight.add(new Card(8, Suit.CLUBS));
+        handThreeEight.add(new Card(8, Suit.DIAMONDS));
+        handThreeEight.add(new Card(10, Suit.HEARTS));
+        handThreeEight.add(new Card(8, Suit.SPADES));
+        handThreeEight.add(new Card(9, Suit.CLUBS));
+
+        handThreeNine = new Hand();
+        handThreeNine.add(new Card(5, Suit.CLUBS));
+        handThreeNine.add(new Card(9, Suit.DIAMONDS));
+        handThreeNine.add(new Card(9, Suit.HEARTS));
+        handThreeNine.add(new Card(8, Suit.SPADES));
+        handThreeNine.add(new Card(9, Suit.CLUBS));
     }
 
     @AfterClass
@@ -50,29 +61,10 @@ public class HandTest {
     @Test
     public void testCompare() {
         System.out.println("compare");
-        Hand hand = null;
-        Hand instance = new Hand();
         int expResult = 0;
-        int result = instance.compare(hand);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        int result = handThreeEight.compare(handThreeEight);
+        assertEquals(expResult, result);
     }
-
-    /**
-     * Test of getScore method, of class Hand.
-     */
-    @Test
-    public void testGetScore() {
-        System.out.println("getScore");
-        Hand instance = new Hand();
-        int expResult = 0;
-        int result = instance.getScore();
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-    
 
 //    /**
 //     * Test of compare method, of class Hand.

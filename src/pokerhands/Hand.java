@@ -41,6 +41,10 @@ public class Hand extends ArrayList<Card> {
         return sb.toString();
     }
 
+    private void parseHandParts() {
+
+    }
+
     public ArrayList<HandPartGame> getHandParts() {
         return handParts;
     }
